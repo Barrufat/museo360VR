@@ -240,10 +240,10 @@ export function ModelMuseu({ props, playState, camZ, cam1, cam2, cam3, cam4, cam
         <mesh name="Ceramic_frog_high-poly" geometry={nodes['Ceramic_frog_high-poly'].geometry} material={materials['guitar_base.005']} position={[-31.14, 7.55, -8.44]} rotation={[0, 1.22, 0]} scale={6.74} />
         <mesh name="Rock_18_low" geometry={nodes.Rock_18_low.geometry} material={materials['Material.036']} position={[-3.77, 5.32, -19.66]} rotation={[1.55, -0.56, 1.49]} scale={0.7} />
         <mesh name="Cube007" geometry={nodes.Cube007.geometry} material={materials['Material.001']} position={[35.51, -1.32, 0]} rotation={[-Math.PI, 0, -Math.PI]} scale={[-7.9, -0.05, -22.59]} />
-        <mesh name="Cube009" geometry={nodes.Cube009.geometry} material={materials['Material.004']} position={[4.09, 7.19, 22.43]} scale={[38.71, 8.62, 0.13]} />
-        <mesh name="Cube011" geometry={nodes.Cube011.geometry} material={materials['Material.004']} position={[4.09, 7.19, -22.37]} scale={[38.71, 8.62, 0.13]} />
-        <mesh name="Cube012" geometry={nodes.Cube012.geometry} material={materials['Material.004']} position={[-32.96, 5.85, -0.31]} rotation={[-Math.PI, 0, -Math.PI]} scale={[-0.33, -10.06, -23.02]} />
-        <mesh name="Cube004" geometry={nodes.Cube004.geometry} material={materials['Material.004']} position={[17.95, 5.41, 0]} scale={[0.18, 3.14, 2.15]} />
+        <mesh name="Cube009" geometry={nodes.Cube009.geometry} material={materials['Material.006']} position={[4.09, 7.19, 22.43]} scale={[38.71, 8.62, 0.13]} />
+        <mesh name="Cube011" geometry={nodes.Cube011.geometry} material={materials['Material.006']} position={[4.09, 7.19, -22.37]} scale={[38.71, 8.62, 0.13]} />
+        <mesh name="Cube012" geometry={nodes.Cube012.geometry} material={materials['Material.006']} position={[-32.96, 5.85, -0.31]} rotation={[-Math.PI, 0, -Math.PI]} scale={[-0.33, -10.06, -23.02]} />
+        <mesh name="Cube004" geometry={nodes.Cube004.geometry} material={materials['Material.006']} position={[17.95, 5.41, 0]} scale={[0.18, 3.14, 2.15]} />
         <mesh name="Plane" geometry={nodes.Plane.geometry} material={materials['Material.002']} position={[-12.32, 0.9, 0]} />
         <mesh name="Plane001" geometry={nodes.Plane001.geometry} material={materials['Material.003']} position={[15.46, 0.92, 16.8]} />
         <mesh name="Plane002" geometry={nodes.Plane002.geometry} material={materials.Material} position={[15.19, 0.78, 16.98]} scale={[0.97, 20.74, 0.97]} />
@@ -297,7 +297,7 @@ export function ModelMuseu({ props, playState, camZ, cam1, cam2, cam3, cam4, cam
         <mesh name="Цилиндр006" geometry={nodes.Цилиндр006.geometry} material={materials['guitar_base.004']} position={[7.01, 4.79, 19.98]} rotation={[-0.29, -0.23, 0.05]} scale={0.1} />
         <mesh name="Цилиндр017" geometry={nodes.Цилиндр017.geometry} material={materials['Material.013']} position={[4.33, 3.39, 18.94]} rotation={[0, 1.55, 0]} scale={5.18} />
         <mesh name="Retopo_Цилиндр005" geometry={nodes.Retopo_Цилиндр005.geometry} material={materials['guitar_base.009']} position={[7.23, 3.27, 18.12]} rotation={[1.82, -1.24, -Math.PI]} scale={4.76} />
-        <mesh name="violin_body" geometry={nodes.violin_body.geometry} material={materials['guitar_base.004']} position={[6.65, 8.85, 22.02]} rotation={[Math.PI, -0.01, Math.PI]} scale={0.02} />
+        <mesh name="violin_body" geometry={nodes.violin_body.geometry} material={materials['guitar_base.015']} position={[6.65, 8.85, 22.02]} rotation={[Math.PI, -0.01, Math.PI]} scale={0.02} />
         <mesh name="violinbowSAMEmaterial" geometry={nodes.violinbowSAMEmaterial.geometry} material={materials['guitar_base.002']} position={[6.55, 10.96, 22.07]} rotation={[Math.PI, -0.01, Math.PI]} scale={0.02} />
         <mesh name="violinrestbody" geometry={nodes.violinrestbody.geometry} material={materials['guitar_base.001']} position={[6.64, 9.89, 21.78]} rotation={[Math.PI, -0.01, Math.PI]} scale={0.02} />
         <mesh name="violintinypiecesSAMEmaterial" geometry={nodes.violintinypiecesSAMEmaterial.geometry} material={materials['strings_bow_rosin_tinypieces.001']} position={[6.55, 10.96, 22.07]} rotation={[Math.PI, -0.01, Math.PI]} scale={0.02} />

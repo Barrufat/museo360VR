@@ -38,7 +38,122 @@
 }
 
 div.product-canvas{
+  display: flex;
   height: 100vh;
   width: 100%;
   background-color:white;
+}
+
+div.popOpen {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 20vh;
+  margin-bottom: -140px;
+}
+
+div.flechas {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  margin-top: 400px;
+  margin-bottom: -140px;
+  align-items: flex-start;
+}
+
+.flechaDer {
+  z-index: 1;
+  color:  rgb(234, 248, 241);
+  margin-top: 500px;
+  margin-left: -350px;
+  font-size: 200px;
+  border: solid 5px rgb(102, 121, 111);
+  border-radius:100%;
+}
+
+.flechaIzk {
+  color:  rgb(234, 248, 241);
+  z-index: 1;
+  margin-top: 500px;
+  margin-right: -300px;
+  font-size: 200px;
+  margin-left: 100px;
+  border: solid 5px rgb(102, 121, 111);
+  border-radius:100%;
+}
+
+.flechaDer:hover {  cursor: pointer;
+  border: solid 5px rgb(102, 121, 111);
+  border-radius: 100%;
+  color: rgb(136, 172, 153);
+  z-index: 1;
+  margin-top: 500px;
+  margin-left: -350px;
+  font-size: 200px;
+}
+
+
+.flechaIzk:hover {
+  border: solid 5px rgb(102, 121, 111);
+  border-radius: 100%;
+  cursor: pointer;
+  color: rgb(136, 172, 153);
+  z-index: 1;
+  margin-top: 500px;
+  margin-right: -300px;
+  font-size: 200px;
+  margin-left: 100px;
+}
+
+div.infoCard {
+  position: absolute;
+  display: flex;
+  background-color: rgb(234, 248, 241);
+  border: solid 5px rgb(102, 121, 111);
+  border-radius: 10px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.imgCard{
+  height: 100%;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.closeCard{
+  border: none;
+  border-radius: 100%;
+  border: solid 5px white;
+  background-color: rgb(102, 121, 111);
+  padding: 20px;
+  color: white;
+  font-size: 40px;
+  padding: 10px 20px 10px 20px;
+  margin: 30px;
+}
+
+.closeCard:hover{
+  border-radius: 100%;
+  border: solid 5px rgb(102, 121, 111);
+  background-color: rgb(136, 172, 153);
+  padding: 20px;
+  color: rgb(102, 121, 111);
+  font-size: 40px;
+  padding: 10px 20px 10px 20px;
+  margin: 30px;
+}
+
+.closed{
+  display:none;
+}
+
+.objetoMuseo:hover{
+  cursor:pointer;
 }
