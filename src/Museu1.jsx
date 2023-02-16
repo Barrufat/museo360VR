@@ -92,6 +92,12 @@ export function ModelMuseu({
     sendTambores(3)
   }
 
+  const [hovered, setHovered] = useState(false)
+
+  useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto'
+  }, [hovered])
+
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -1406,7 +1412,10 @@ export function ModelMuseu({
           position={[34.71, -1.25, 17.38]}
           scale={0.44}
         />
-        <group onClick={LanzarTambores}>
+        <group onClick={LanzarTambores}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+        >
           <mesh
             name="Куб"
             geometry={nodes.Куб.geometry}
@@ -1488,7 +1497,10 @@ export function ModelMuseu({
             scale={4.76}
           />
         </group>
-        <group onClick={LanzarArmor}>
+        <group onClick={LanzarArmor}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+        >
           <mesh
             name="violin_body"
             geometry={nodes.violin_body.geometry}
@@ -1623,7 +1635,11 @@ export function ModelMuseu({
             scale={0.73}
           />
         </group>
-        <group onClick={LanzarArmor}>
+        <group onClick={LanzarArmor}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+        >
+
           <group
             name="Soi_SimpleArmor"
             position={[14.59, 1.75, 19.88]}
@@ -1761,6 +1777,8 @@ export function ModelMuseu({
           </group>
         </group>
         <group onClick={LanzarGuitar1}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
           name="guitar_base"
           position={[-1.28, 3.92, 21.82]}
           rotation={[Math.PI / 2, 0, -Math.PI]}
@@ -1853,7 +1871,10 @@ export function ModelMuseu({
             scale={-0.67}
           />
         </group>
-        <group className='objetoMuseo' onClick={LanzarYunke}>
+        <group onClick={LanzarYunke}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+        >
           <mesh
             name="body"
             geometry={nodes.body.geometry}
