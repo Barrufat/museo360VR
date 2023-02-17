@@ -8,6 +8,7 @@ import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
 import './App.css'
 
 export function ModelMuseu({
+  sendCambio2,
   sendArmor,
   sendGuitar1,
   sendYunke,
@@ -26,17 +27,33 @@ export function ModelMuseu({
   const { nodes, materials, animations } = useGLTF("/museu1.glb");
   const { actions } = useAnimations(animations, group);
 
+  const CambioCam = () =>{
+    if (actions["Camera.001Action"].time >= 3.1){
+      sendCambio2(false) 
+    } 
+  }
+
+  useEffect(() => {
+    const timerID = setInterval(() => { CambioCam() }, 1000);
+
+    return () => {
+      clearInterval(timerID);
+    }
+  });
+  
+
   useEffect(() => {
     console.log(actions);
     if (cam1) {
       if (playState) {
-        // actions["CameraAction.001"].timeScale = 0.3;
+        actions["CameraAction.001"].timeScale = 0.3;
         actions["CameraAction.001"].play();
       } else {
         actions["CameraAction.001"].timeScale = 0;
       }
     } else if (cam2) {
       if (playState) {
+
         actions["Camera.001Action"].play();
         actions["Camera.001Action"].timeScale = 0.3;
       } else {

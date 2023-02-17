@@ -32,16 +32,17 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-div.product-canvas{
+div.product-canvas {
   display: flex;
   height: 100vh;
   width: 100%;
-  background-color:white;
+  background-color: white;
 }
 
 div.popOpen {
@@ -49,10 +50,8 @@ div.popOpen {
   z-index: 1;
   display: flex;
   justify-content: center;
-  height: 100%;
   width: 100%;
-  margin-top: 20vh;
-  margin-bottom: -140px;
+  margin-top: 5vh;
 }
 
 div.flechas {
@@ -62,40 +61,41 @@ div.flechas {
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  margin-top: 400px;
+  margin-top: 40vh;
   margin-bottom: -140px;
   align-items: flex-start;
 }
 
 .flechaDer {
   z-index: 1;
-  color:  rgb(234, 248, 241);
-  margin-top: 500px;
-  margin-left: -350px;
-  font-size: 200px;
+  color: rgb(234, 248, 241);
+  margin-top: 40vh;
+  font-size: 100px;
   border: solid 5px rgb(102, 121, 111);
-  border-radius:100%;
+  border-radius: 100%;
+  margin-left: -190px;
 }
 
 .flechaIzk {
-  color:  rgb(234, 248, 241);
+  color: rgb(234, 248, 241);
   z-index: 1;
-  margin-top: 500px;
-  margin-right: -300px;
-  font-size: 200px;
-  margin-left: 100px;
+  margin-top: 40vh;
+  font-size: 100px;
   border: solid 5px rgb(102, 121, 111);
-  border-radius:100%;
+  border-radius: 100%;
+  margin-right: -200px;
+  margin-left: 90px;
 }
 
-.flechaDer:hover {  cursor: pointer;
+.flechaDer:hover {
+  cursor: pointer;
   border: solid 5px rgb(102, 121, 111);
   border-radius: 100%;
   color: rgb(136, 172, 153);
   z-index: 1;
-  margin-top: 500px;
-  margin-left: -350px;
-  font-size: 200px;
+  margin-top: 40vh;
+  font-size: 100px;
+  margin-left: -190px;
 }
 
 
@@ -105,10 +105,11 @@ div.flechas {
   cursor: pointer;
   color: rgb(136, 172, 153);
   z-index: 1;
-  margin-top: 500px;
-  margin-right: -300px;
-  font-size: 200px;
-  margin-left: 100px;
+  margin-top: 40vh;
+  font-size:100px;
+  margin-right: -200px;
+    margin-left: 90px;
+
 }
 
 div.infoCard {
@@ -119,41 +120,47 @@ div.infoCard {
   border-radius: 10px;
   align-items: center;
   flex-direction: column;
+  margin-top: 10vh;
 }
 
-.imgCard{
-  height: 100%;
+.tituloCard{
+  color: rgb(102, 121, 111);
+  font-size: larger;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.imgCard {
+  width: 30%;
   border-radius: 10px;
-  margin: 20px;
+  margin: 5px;
 }
 
-.closeCard{
+.closeCard {
   border: none;
   border-radius: 100%;
   border: solid 5px white;
   background-color: rgb(102, 121, 111);
-  padding: 20px;
   color: white;
   font-size: 40px;
   padding: 10px 20px 10px 20px;
-  margin: 30px;
+  margin: 5px;
 }
 
-.closeCard:hover{
+.closeCard:hover {
   border-radius: 100%;
   border: solid 5px rgb(102, 121, 111);
   background-color: rgb(136, 172, 153);
-  padding: 20px;
   color: rgb(102, 121, 111);
   font-size: 40px;
   padding: 10px 20px 10px 20px;
-  margin: 30px;
+  margin: 5px;
 }
 
-.closed{
-  display:none;
+.closed {
+  display: none;
 }
 
-.objetoMuseo:hover{
-  cursor:pointer;
+.objetoMuseo:hover {
+  cursor: pointer;
 }

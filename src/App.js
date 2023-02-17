@@ -5,7 +5,7 @@ import { ModelMuseu } from './Museu1';
 import { Suspense, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowAltCircleRight, faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 // import { OrbitControls, OrthographicCamera, useGLTF } from '@react-three/drei'
 // import { Selection, EffectComposer, Outline } from '@react-three/postprocessing'
 // import * as THREE from "three";
@@ -89,6 +89,11 @@ function App() {
     setCam6(true);
   }
 
+  function cambioCam2 (toggle)  {
+    setCam4 (true);
+    setCam2 (toggle);
+  }
+
   const [card, setCard] = useState([])
   const [displayCard, setDisplayCard] = useState('closed')
 
@@ -141,7 +146,7 @@ function App() {
 
       <div className={displayCard}>
         <div className='infoCard'>
-          <h1> {card.nombre}</h1>
+          <h1 className='tituloCard'> {card.nombre}</h1>
           <img className='imgCard' src={card.img} width='50%' alt={card.nombre} />
           <button className='closeCard' onClick={cerrarCard}> X </button>
         </div>
@@ -161,7 +166,8 @@ function App() {
             </EffectComposer> */}
             {/* <OrbitControls/> */}
             <ModelMuseu playState={playState} camZ={camZ} cam1={cam1} cam2={cam2} cam3={cam3} cam4={cam4} cam6={cam6} cam5={cam5}
-              sendYunke={abrirCard} sendArmor={abrirCard} sendGuitar1={abrirCard} sendTambores={abrirCard} />
+              sendYunke={abrirCard} sendArmor={abrirCard} sendGuitar1={abrirCard} sendTambores={abrirCard}
+              sendCambio2={cambioCam2} />
           </Suspense>
         </Canvas>
         <FontAwesomeIcon className='flechaDer' onClick={CamDer} icon={faArrowCircleRight} />
