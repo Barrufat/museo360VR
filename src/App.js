@@ -2,7 +2,7 @@
 import './App.css';
 // import { ModelMuseu } from './Museu';
 import { ModelMuseu } from './Museu1';
-import { Suspense, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
@@ -38,6 +38,7 @@ function App() {
   }
 
   const Cam1 = () => {
+    setTiempo (0);
     setCam1(true);
     setCam2(false);
     setCam3(false);
@@ -47,6 +48,7 @@ function App() {
   }
 
   const Cam2 = () => {
+    setTiempo (0);
     setCam1(false);
     setCam2(true);
     setCam3(false);
@@ -55,6 +57,7 @@ function App() {
     setCam6(false);
   }
   const Cam3 = () => {
+    setTiempo (0);
     setCam1(false);
     setCam2(false);
     setCam3(true);
@@ -63,6 +66,7 @@ function App() {
     setCam6(false);
   }
   const Cam4 = () => {
+    setTiempo (0);
     setCam1(false);
     setCam2(false);
     setCam3(false);
@@ -72,6 +76,7 @@ function App() {
   }
 
   const Cam5 = () => {
+    setTiempo (0);
     setCam1(false);
     setCam2(false);
     setCam3(false);
@@ -81,6 +86,7 @@ function App() {
   }
 
   const Cam6 = () => {
+    setTiempo (0);
     setCam1(false);
     setCam2(false);
     setCam3(false);
@@ -90,12 +96,26 @@ function App() {
   }
 
   function cambioCam2 (toggle)  {
+    setTiempo (0);
     setCam4 (true);
     setCam2 (toggle);
   }
 
+  function cambioCam3 (toggle)  {
+    setTiempo (0);
+    setCam5 (true);
+    setCam3 (toggle);
+  }
+
+
   const [card, setCard] = useState([])
   const [displayCard, setDisplayCard] = useState('closed')
+  const [tiempo, setTiempo] = useState (0)
+
+  const avanzarCam = () =>{
+    setTiempo (tiempo + 0.1)
+  }
+
 
   const objMuseo = [
     {
@@ -127,7 +147,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" onWheel={avanzarCam}>
       {/* <div className='flechas'>
         < FontAwesomeIcon className='flechaIzk' onClick={CamIzk} icon={faArrowCircleLeft} />
         <button onClick={Pausar}>Pause</button>
@@ -165,7 +185,7 @@ function App() {
               <Outline blur visibleEdgeColor="grey" edgeStrength={100} width={500} />
             </EffectComposer> */}
             {/* <OrbitControls/> */}
-            <ModelMuseu playState={playState} camZ={camZ} cam1={cam1} cam2={cam2} cam3={cam3} cam4={cam4} cam6={cam6} cam5={cam5}
+            <ModelMuseu playState={playState} camZ={camZ} cam1={cam1} cam2={cam2} cam3={cam3} cam4={cam4} cam6={cam6} cam5={cam5} tiempo={tiempo}
               sendYunke={abrirCard} sendArmor={abrirCard} sendGuitar1={abrirCard} sendTambores={abrirCard}
               sendCambio2={cambioCam2} />
           </Suspense>

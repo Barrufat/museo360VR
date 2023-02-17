@@ -9,12 +9,14 @@ import './App.css'
 
 export function ModelMuseu({
   sendCambio2,
+  sendCambio3,
   sendArmor,
   sendGuitar1,
   sendYunke,
   sendTambores,
   props,
   playState,
+  tiempo,
   camZ,
   cam1,
   cam2,
@@ -23,24 +25,13 @@ export function ModelMuseu({
   cam5,
   cam6,
 }) {
+
+  console.log('tiempo: ' + tiempo)
+
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/museu1.glb");
   const { actions } = useAnimations(animations, group);
 
-  const CambioCam = () =>{
-    if (actions["Camera.001Action"].time >= 3.1){
-      sendCambio2(false) 
-    } 
-  }
-
-  useEffect(() => {
-    const timerID = setInterval(() => { CambioCam() }, 1000);
-
-    return () => {
-      clearInterval(timerID);
-    }
-  });
-  
 
   useEffect(() => {
     console.log(actions);
@@ -52,43 +43,39 @@ export function ModelMuseu({
         actions["CameraAction.001"].timeScale = 0;
       }
     } else if (cam2) {
-      if (playState) {
+      actions["Camera.001Action"].play();
+      actions["Camera.001Action"].timeScale = 0;
+      actions["Camera.001Action"].time = tiempo;
+      console.log(actions["Camera.001Action"].time)
+      if (tiempo >= 3.15) {
+        sendCambio2(false)
+      }
 
-        actions["Camera.001Action"].play();
-        actions["Camera.001Action"].timeScale = 0.3;
-      } else {
-        actions["Camera.001Action"].timeScale = 0;
-      }
     } else if (cam3) {
-      if (playState) {
-        actions["Camera.002Action"].play();
-        actions["Camera.002Action"].timeScale = 0.3;
-      } else {
-        actions["Camera.002Action"].timeScale = 0;
+      actions["Camera.002Action"].play();
+      actions["Camera.002Action"].timeScale = 0;
+      actions["Camera.002Action"].time = tiempo;
+      if (tiempo >= 3.1) {
+        sendCambio3(false)
       }
+
     } else if (cam4) {
-      if (playState) {
-        actions["Camera.003Action"].play();
-        actions["Camera.003Action"].timeScale = 0.3;
-      } else {
-        actions["Camera.003Action"].timeScale = 0;
-      }
+      actions["Camera.003Action"].play();
+      actions["Camera.003Action"].timeScale = 0;
+      actions["Camera.003Action"].time = tiempo;
+
     } else if (cam5) {
-      if (playState) {
-        actions["Camera.004Action"].play();
-        actions["Camera.004Action"].timeScale = 0.4;
-      } else {
-        actions["Camera.004Action"].timeScale = 0;
-      }
+      actions["Camera.004Action"].play();
+      actions["Camera.004Action"].timeScale = 0;
+      actions["Camera.004Action"].time = tiempo;
+
     } else if (cam6) {
-      if (playState) {
-        actions["Camera.005Action"].play();
-        actions["Camera.005Action"].timeScale = 0.5;
-      } else {
-        actions["Camera.005Action"].timeScale = 0;
-      }
+      actions["Camera.005Action"].play();
+      actions["Camera.005Action"].timeScale = 0;
+      actions["Camera.005Action"].time = tiempo;
+
     }
-  }, [playState, cam1, cam2, cam3, cam4, cam5, cam6]);
+  }, [playState, tiempo, cam1, cam2, cam3, cam4, cam5, cam6]);
 
 
 
@@ -1514,7 +1501,7 @@ export function ModelMuseu({
             scale={4.76}
           />
         </group>
-        <group onClick={LanzarArmor}
+        <group onClick={LanzarTambores}
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
         >
@@ -1550,108 +1537,108 @@ export function ModelMuseu({
             rotation={[Math.PI, -0.01, Math.PI]}
             scale={0.02}
           />
-          <mesh
-            name="Body"
-            geometry={nodes.Body.geometry}
-            material={materials["Material.015"]}
-            position={[-31.21, 7.87, -13.63]}
-            rotation={[-1.56, 0.99, 1.58]}
-            scale={9.21}
-          />
-          <mesh
-            name="BtnA"
-            geometry={nodes.BtnA.geometry}
-            material={materials["Material.023"]}
-            position={[-31.1, 7.83, -14.04]}
-            rotation={[-1.56, 0.99, 1.58]}
-            scale={[8.8, 8.8, 9.21]}
-          />
-          <mesh
-            name="BtnB"
-            geometry={nodes.BtnB.geometry}
-            material={materials["Material.023"]}
-            position={[-31.1, 7.83, -13.89]}
-            rotation={[-1.56, 0.99, 1.58]}
-            scale={[8.8, 8.8, 9.21]}
-          />
-          <mesh
-            name="BtnSelect"
-            geometry={nodes.BtnSelect.geometry}
-            material={materials["Material.009"]}
-            position={[-31.09, 7.82, -13.53]}
-            rotation={[-1.56, 0.99, 1.58]}
-            scale={9.21}
-          />
-          <mesh
-            name="BtnStart"
-            geometry={nodes.BtnStart.geometry}
-            material={materials["Material.009"]}
-            position={[-31.09, 7.82, -13.67]}
-            rotation={[-1.56, 0.99, 1.58]}
-            scale={9.21}
-          />
-          <mesh
-            name="DPad"
-            geometry={nodes.DPad.geometry}
-            material={materials["Material.016"]}
-            position={[-31.12, 7.86, -13.26]}
-            rotation={[-1.56, 0.99, 1.58]}
-            scale={9.21}
-          />
-          <mesh
-            name="Cube024"
-            geometry={nodes.Cube024.geometry}
-            material={materials["Material.018"]}
-            position={[15.98, 5.07, -20.3]}
-            scale={[-0.93, -0.13, -0.93]}
-          />
-          <mesh
-            name="Cube025"
-            geometry={nodes.Cube025.geometry}
-            material={materials["Bronze_Procedural_001.001"]}
-            position={[15.6, 5.88, -20.08]}
-            rotation={[0, -1.57, 0]}
-            scale={0.21}
-          />
-          <mesh
-            name="Cylinder011"
-            geometry={nodes.Cylinder011.geometry}
-            material={materials["Bronze_Procedural_001.001"]}
-            position={[15.6, 5.88, -20.08]}
-            rotation={[Math.PI / 2, -Math.PI / 2, 0]}
-            scale={[0.73, 0.78, 0.73]}
-          />
-          <mesh
-            name="Cylinder012"
-            geometry={nodes.Cylinder012.geometry}
-            material={materials["Bronze_Procedural_001.001"]}
-            position={[16.35, 6.5, -20.08]}
-            rotation={[Math.PI / 2, 0, Math.PI / 2]}
-            scale={0.15}
-          />
-          <mesh
-            name="Cylinder013"
-            geometry={nodes.Cylinder013.geometry}
-            material={materials["Material.019"]}
-            position={[16.35, 6.5, -20.08]}
-            rotation={[Math.PI / 2, 0, Math.PI / 2]}
-            scale={0.15}
-          />
-          <mesh
-            name="Plane031"
-            geometry={nodes.Plane031.geometry}
-            material={materials["Material.013"]}
-            position={[16.01, 6.55, -20.33]}
-            scale={0.73}
-          />
-          <mesh
-            name="Plane032"
-            geometry={nodes.Plane032.geometry}
-            material={materials["Material.013"]}
-            position={[16.01, 6.55, -20.33]}
-            scale={0.73}
-          />
         </group>
+        <mesh
+          name="Body"
+          geometry={nodes.Body.geometry}
+          material={materials["Material.015"]}
+          position={[-31.21, 7.87, -13.63]}
+          rotation={[-1.56, 0.99, 1.58]}
+          scale={9.21}
+        />
+        <mesh
+          name="BtnA"
+          geometry={nodes.BtnA.geometry}
+          material={materials["Material.023"]}
+          position={[-31.1, 7.83, -14.04]}
+          rotation={[-1.56, 0.99, 1.58]}
+          scale={[8.8, 8.8, 9.21]}
+        />
+        <mesh
+          name="BtnB"
+          geometry={nodes.BtnB.geometry}
+          material={materials["Material.023"]}
+          position={[-31.1, 7.83, -13.89]}
+          rotation={[-1.56, 0.99, 1.58]}
+          scale={[8.8, 8.8, 9.21]}
+        />
+        <mesh
+          name="BtnSelect"
+          geometry={nodes.BtnSelect.geometry}
+          material={materials["Material.009"]}
+          position={[-31.09, 7.82, -13.53]}
+          rotation={[-1.56, 0.99, 1.58]}
+          scale={9.21}
+        />
+        <mesh
+          name="BtnStart"
+          geometry={nodes.BtnStart.geometry}
+          material={materials["Material.009"]}
+          position={[-31.09, 7.82, -13.67]}
+          rotation={[-1.56, 0.99, 1.58]}
+          scale={9.21}
+        />
+        <mesh
+          name="DPad"
+          geometry={nodes.DPad.geometry}
+          material={materials["Material.016"]}
+          position={[-31.12, 7.86, -13.26]}
+          rotation={[-1.56, 0.99, 1.58]}
+          scale={9.21}
+        />
+        <mesh
+          name="Cube024"
+          geometry={nodes.Cube024.geometry}
+          material={materials["Material.018"]}
+          position={[15.98, 5.07, -20.3]}
+          scale={[-0.93, -0.13, -0.93]}
+        />
+        <mesh
+          name="Cube025"
+          geometry={nodes.Cube025.geometry}
+          material={materials["Bronze_Procedural_001.001"]}
+          position={[15.6, 5.88, -20.08]}
+          rotation={[0, -1.57, 0]}
+          scale={0.21}
+        />
+        <mesh
+          name="Cylinder011"
+          geometry={nodes.Cylinder011.geometry}
+          material={materials["Bronze_Procedural_001.001"]}
+          position={[15.6, 5.88, -20.08]}
+          rotation={[Math.PI / 2, -Math.PI / 2, 0]}
+          scale={[0.73, 0.78, 0.73]}
+        />
+        <mesh
+          name="Cylinder012"
+          geometry={nodes.Cylinder012.geometry}
+          material={materials["Bronze_Procedural_001.001"]}
+          position={[16.35, 6.5, -20.08]}
+          rotation={[Math.PI / 2, 0, Math.PI / 2]}
+          scale={0.15}
+        />
+        <mesh
+          name="Cylinder013"
+          geometry={nodes.Cylinder013.geometry}
+          material={materials["Material.019"]}
+          position={[16.35, 6.5, -20.08]}
+          rotation={[Math.PI / 2, 0, Math.PI / 2]}
+          scale={0.15}
+        />
+        <mesh
+          name="Plane031"
+          geometry={nodes.Plane031.geometry}
+          material={materials["Material.013"]}
+          position={[16.01, 6.55, -20.33]}
+          scale={0.73}
+        />
+        <mesh
+          name="Plane032"
+          geometry={nodes.Plane032.geometry}
+          material={materials["Material.013"]}
+          position={[16.01, 6.55, -20.33]}
+          scale={0.73}
+        />
         <group onClick={LanzarArmor}
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
