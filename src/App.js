@@ -38,7 +38,7 @@ function App() {
   }
 
   const Cam1 = () => {
-    setTiempo (0);
+    setTiempo(0);
     setCam1(true);
     setCam2(false);
     setCam3(false);
@@ -48,7 +48,7 @@ function App() {
   }
 
   const Cam2 = () => {
-    setTiempo (0);
+    setTiempo(0);
     setCam1(false);
     setCam2(true);
     setCam3(false);
@@ -57,7 +57,7 @@ function App() {
     setCam6(false);
   }
   const Cam3 = () => {
-    setTiempo (0);
+    setTiempo(0);
     setCam1(false);
     setCam2(false);
     setCam3(true);
@@ -66,7 +66,7 @@ function App() {
     setCam6(false);
   }
   const Cam4 = () => {
-    setTiempo (0);
+    setTiempo(0);
     setCam1(false);
     setCam2(false);
     setCam3(false);
@@ -76,7 +76,7 @@ function App() {
   }
 
   const Cam5 = () => {
-    setTiempo (0);
+    setTiempo(0);
     setCam1(false);
     setCam2(false);
     setCam3(false);
@@ -86,7 +86,7 @@ function App() {
   }
 
   const Cam6 = () => {
-    setTiempo (0);
+    setTiempo(0);
     setCam1(false);
     setCam2(false);
     setCam3(false);
@@ -95,27 +95,56 @@ function App() {
     setCam6(true);
   }
 
-  function cambioCam2 (toggle)  {
-    setTiempo (0);
-    setCam4 (true);
-    setCam2 (toggle);
+  function cambioCam2(toggle) {
+    setTiempo(0);
+    setCam4(true);
+    setCam2(toggle);
   }
 
-  function cambioCam3 (toggle)  {
-    setTiempo (0);
-    setCam5 (true);
-    setCam3 (toggle);
+  function cambioCam3(toggle) {
+    setTiempo(0);
+    setCam5(true);
+    setCam3(toggle);
   }
 
 
   const [card, setCard] = useState([])
   const [displayCard, setDisplayCard] = useState('closed')
-  const [tiempo, setTiempo] = useState (0)
+  const [displayFlechaIzk, setDisplayFlechaIzk] = useState('flechaIzk')
+  const [displayFlechaDer, setDisplayFlechaDer] = useState('flechaDer')
+  const [displayMap, setDisplayMap] = useState('closed')
+  const [tiempo, setTiempo] = useState(0)
 
-  const avanzarCam = () =>{
-    setTiempo (tiempo + 0.1)
+  const avanzarCam = () => {
+    setTiempo(tiempo + 0.05)
   }
 
+  function abrirMapa(toggle) {
+    setDisplayMap(toggle);
+  }
+
+  const cerrarMapIzk = () => {
+    setDisplayMap('closed')
+    setDisplayFlechaDer('flechaDer');
+    setDisplayFlechaIzk('flechaIzk');
+    setTiempo(0);
+    setCam2(true);
+    setCam1(false);
+  }
+
+  const cerrarMapDer = () => {
+    setDisplayMap('closed')
+    setDisplayFlechaDer('flechaDer');
+    setDisplayFlechaIzk('flechaIzk');
+    setTiempo(0);
+    setCam3(true);
+    setCam1(false);
+  }
+
+  function cerrarFlechas(toggle) {
+    setDisplayFlechaIzk(toggle);
+    setDisplayFlechaDer(toggle);
+  }
 
   const objMuseo = [
     {
@@ -135,6 +164,7 @@ function App() {
       img: "./tambores.png"
     },
   ]
+
 
   function abrirCard(num) {
     setCard(objMuseo[num]);
@@ -172,8 +202,19 @@ function App() {
         </div>
       </div>
 
+      <div className={displayMap}>
+      <div className="casilla">
+        <img src='./mapa1.png' alt='mapa1' />
+        <img onClick={cerrarMapIzk} src='./mapa1hover.png' alt='mapa1hover' />
+      </div>
+      <div className="casilla">
+        <img src='./mapa2.png' alt='mapa2' />
+        <img onClick={cerrarMapDer} src='./mapa2hover.png' alt='mapa2hover'/>
+      </div>
+      </div>
+
       <div className='product-canvas'>
-        < FontAwesomeIcon className='flechaIzk' onClick={CamIzk} icon={faArrowCircleLeft} />
+        < FontAwesomeIcon className={displayFlechaIzk} onClick={CamIzk} icon={faArrowCircleLeft} />
         <Canvas>
           {/* <OrbitControls/> */}
           <ambientLight shadow={0.1} intensity={0.5} />
@@ -186,11 +227,11 @@ function App() {
             </EffectComposer> */}
             {/* <OrbitControls/> */}
             <ModelMuseu playState={playState} camZ={camZ} cam1={cam1} cam2={cam2} cam3={cam3} cam4={cam4} cam6={cam6} cam5={cam5} tiempo={tiempo}
-              sendYunke={abrirCard} sendArmor={abrirCard} sendGuitar1={abrirCard} sendTambores={abrirCard}
-              sendCambio2={cambioCam2} />
+              sendFlechas={cerrarFlechas} sendMapa={abrirMapa} sendYunke={abrirCard} sendArmor={abrirCard} sendGuitar1={abrirCard} sendTambores={abrirCard}
+              sendCambio2={cambioCam2} sendCambio3={cambioCam3} />
           </Suspense>
         </Canvas>
-        <FontAwesomeIcon className='flechaDer' onClick={CamDer} icon={faArrowCircleRight} />
+        <FontAwesomeIcon className={displayFlechaDer} onClick={CamDer} icon={faArrowCircleRight} />
       </div>
     </div>
   );

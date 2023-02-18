@@ -10,6 +10,8 @@ import './App.css'
 export function ModelMuseu({
   sendCambio2,
   sendCambio3,
+  sendMapa,
+  sendFlechas,
   sendArmor,
   sendGuitar1,
   sendYunke,
@@ -36,12 +38,13 @@ export function ModelMuseu({
   useEffect(() => {
     console.log(actions);
     if (cam1) {
-      if (playState) {
-        actions["CameraAction.001"].timeScale = 0.3;
-        actions["CameraAction.001"].play();
-      } else {
         actions["CameraAction.001"].timeScale = 0;
-      }
+        actions["CameraAction.001"].play();
+        actions["CameraAction.001"].time = tiempo;
+        if (tiempo >= 3.70) {
+          sendMapa('mapOpen')
+          sendFlechas('closed')
+        }
     } else if (cam2) {
       actions["Camera.001Action"].play();
       actions["Camera.001Action"].timeScale = 0;
@@ -921,10 +924,10 @@ export function ModelMuseu({
           name="Camera"
           makeDefault={cam1}
           far={1000}
-          near={0}
+          near={0.1}
           fov={90.71}
-          position={[42.19, 4.33, -0.02]}
-          rotation={[-Math.PI, camZ, -1.59]}
+          position={[42.19, 6.6, -0.02]}
+          rotation={[-Math.PI, camZ, -Math.PI]}
         />
         <PerspectiveCamera
           name="Camera001"
