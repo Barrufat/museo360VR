@@ -6,6 +6,7 @@ import { Suspense, useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+import Intro from './componentes/intro';
 // import { OrbitControls, OrthographicCamera, useGLTF } from '@react-three/drei'
 // import { Selection, EffectComposer, Outline } from '@react-three/postprocessing'
 // import * as THREE from "three";
@@ -177,12 +178,15 @@ function App() {
   }
 
   return (
+
     <div className="App" onWheel={avanzarCam}>
       {/* <div className='flechas'>
         < FontAwesomeIcon className='flechaIzk' onClick={CamIzk} icon={faArrowCircleLeft} />
         <button onClick={Pausar}>Pause</button>
         <FontAwesomeIcon className='flechaDer' onClick={CamDer} icon={faArrowCircleRight} />
       </div> */}
+
+      <Intro/>
 
       <button onClick={Pausar}>Pause</button>
 
