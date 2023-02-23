@@ -114,10 +114,12 @@ function App() {
   const [displayFlechaIzk, setDisplayFlechaIzk] = useState('flechaIzk')
   const [displayFlechaDer, setDisplayFlechaDer] = useState('flechaDer')
   const [displayMap, setDisplayMap] = useState('closed')
+  const [displayScroll, setDisplayScroll] = useState('closed')
   const [tiempo, setTiempo] = useState(0)
 
   const avanzarCam = () => {
     setTiempo(tiempo + 0.05)
+    setDisplayScroll('closed')
   }
 
   function abrirMapa(toggle) {
@@ -150,22 +152,29 @@ function App() {
   const objMuseo = [
     {
       nombre: "Yunke",
-      img: "./yunke.png"
+      img: "./yunke.png",
+      texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. At consectetur earum corrupti accusantium perspiciatis voluptatibus, debitis reprehenderit quo voluptas. Cumque ratione velit ut ullam nulla deleniti sapiente pariatur repudiandae facilis?"
     },
     {
       nombre: "Armadura Medieval",
-      img: "./armadura.png"
+      img: "./armadura.png",
+      texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. At consectetur earum corrupti accusantium perspiciatis voluptatibus, debitis reprehenderit quo voluptas. Cumque ratione velit ut ullam nulla deleniti sapiente pariatur repudiandae facilis?"
     },
     {
       nombre: "Guitarra Acústica",
-      img: "./guitar1.png"
+      img: "./guitar1.png",
+      texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. At consectetur earum corrupti accusantium perspiciatis voluptatibus, debitis reprehenderit quo voluptas. Cumque ratione velit ut ullam nulla deleniti sapiente pariatur repudiandae facilis?"
     },
     {
       nombre: "Tambores Africanos",
-      img: "./tambores.png"
+      img: "./tambores.png",
+      texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. At consectetur earum corrupti accusantium perspiciatis voluptatibus, debitis reprehenderit quo voluptas. Cumque ratione velit ut ullam nulla deleniti sapiente pariatur repudiandae facilis?"
     },
   ]
 
+  function primerScroll(clase) {
+    setDisplayScroll(clase)
+  }
 
   function abrirCard(num) {
     setCard(objMuseo[num]);
@@ -186,39 +195,49 @@ function App() {
         <FontAwesomeIcon className='flechaDer' onClick={CamDer} icon={faArrowCircleRight} />
       </div> */}
 
-      <Intro/>
+      <Intro sendScroll={primerScroll} />
 
-      <button onClick={Pausar}>Pause</button>
-
-      <button onClick={Cam1}> Cam1</button>
+      {/* <button onClick={Cam1}> Cam1</button>
       <button onClick={Cam2}> Cam2</button>
       <button onClick={Cam3}> Cam3</button>
       <button onClick={Cam4}> Cam4</button>
       <button onClick={Cam5}> Cam5</button>
-      <button onClick={Cam6}> Cam6</button>
+      <button onClick={Cam6}> Cam6</button> */}
+
+      <div className={displayScroll}>
+        <img className='scrollImg' src='./scroll.png' alt='scroll' width='8%' />
+        <div className='contText'>
+          <h2 className='turnText'>Turn camera left</h2>
+          <h1 className='scrollText'>Scroll to move!</h1>
+          <h2 className='turnText'>Turn camera right</h2>
+        </div>
+      </div>
 
 
       <div className={displayCard}>
         <div className='infoCard'>
           <h1 className='tituloCard'> {card.nombre}</h1>
-          <img className='imgCard' src={card.img} width='50%' alt={card.nombre} />
+          <div className='contenidoCard'>
+            <img className='imgCard' src={card.img} width='50%' alt={card.nombre} />
+            <div className='textCard'>{card.texto}</div>
+          </div>
           <button className='closeCard' onClick={cerrarCard}> X </button>
         </div>
       </div>
 
       <div className={displayMap}>
-      <div className="casilla">
-        <img src='./mapa1.png' alt='mapa1' />
-        <img onClick={cerrarMapIzk} src='./mapa1hover.png' alt='mapa1hover' />
-      </div>
-      <div className="casilla">
-        <img src='./mapa2.png' alt='mapa2' />
-        <img onClick={cerrarMapDer} src='./mapa2hover.png' alt='mapa2hover'/>
-      </div>
+        <div className="casilla">
+          <img src='./mapa1.png' alt='mapa1'/>
+          <img onClick={cerrarMapIzk} src='./mapa1hover.png' alt='mapa1hover'/>
+        </div>
+        <div className="casilla">
+          <img src='./mapa2.png' alt='mapa2'/>
+          <img onClick={cerrarMapDer} src='./mapa2hover.png' alt='mapa2hover'/>
+        </div>
       </div>
 
       <div className='product-canvas'>
-        < FontAwesomeIcon className={displayFlechaIzk} onClick={CamIzk} icon={faArrowCircleLeft} />
+        <FontAwesomeIcon className={displayFlechaIzk} onClick={CamIzk} icon={faArrowCircleLeft} />
         <Canvas>
           {/* <OrbitControls/> */}
           <ambientLight shadow={0.1} intensity={0.5} />

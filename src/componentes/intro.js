@@ -2,7 +2,7 @@ import './intro.css'
 import React, { useRef, useState, useEffect } from "react";
 import useVideoPlayer from './videoPlayer';
 
-const Intro = () => {
+const Intro = ({sendScroll}) => {
 
     const videoElement = useRef(null);
     const {
@@ -20,10 +20,10 @@ const Intro = () => {
 
 
     const [videoClass, setVideoClass] = useState('open');
-    const [displayBeggin, setDisplaybeggin] = useState('begginOpen');
+    const [displayBeggin, setDisplaybeggin] = useState('contBeggin');
 
     useEffect(() => {
-        if (playerState.isPlaying){
+        if (playerState.isPlaying) {
             setDisplaybeggin('closed')
         }
         if (playerState.progress > 0 && playerState.progress < 100) {
@@ -31,13 +31,16 @@ const Intro = () => {
         }
         else if (playerState.progress === 100) {
             setVideoClass('closed');
+            sendScroll('scrollOpen')
         }
     }, [playerState.progress, playerState.isPlaying, videoClass])
 
 
     return (
         <div>
-            <button className={displayBeggin} onClick={Beggin}>Lets beggin!</button>
+            <div className={displayBeggin}>
+                <button className='begginOpen' onClick={Beggin}>Lets beggin!</button>
+            </div>
             <video className={videoClass}
                 src={'./IntroMuseum.mp4'}
                 ref={videoElement}

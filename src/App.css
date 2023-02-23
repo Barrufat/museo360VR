@@ -60,7 +60,9 @@ div.mapOpen {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 22vh;
+  margin-top: 20vh;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .casilla {
@@ -70,8 +72,9 @@ div.mapOpen {
 }
 
 .casilla img:first-child {
-  display:flex;
+  display: flex;
   width: 100%;
+  height:346px;
 }
 
 .casilla img:last-child {
@@ -79,13 +82,14 @@ div.mapOpen {
 }
 
 .casilla:hover img:last-child {
-  display:flex;
+  display: flex;
+  height:346px;
   width: 100%;
 }
 
 .casilla:hover img:first-child {
   display: none;
-  
+
 }
 
 .flechaDer {
@@ -93,9 +97,10 @@ div.mapOpen {
   color: rgb(234, 248, 241);
   margin-top: 40vh;
   font-size: 100px;
-  border: solid 5px rgb(102, 121, 111);
+  border: solid 3px rgb(102, 121, 111);
   border-radius: 100%;
   margin-left: -190px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 }
 
 .flechaIzk {
@@ -103,57 +108,103 @@ div.mapOpen {
   z-index: 1;
   margin-top: 40vh;
   font-size: 100px;
-  border: solid 5px rgb(102, 121, 111);
+  border: solid 3px rgb(102, 121, 111);
   border-radius: 100%;
   margin-right: -200px;
   margin-left: 90px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 }
 
 .flechaDer:hover {
   cursor: pointer;
-  border: solid 5px rgb(102, 121, 111);
+  border: solid 3px rgb(102, 121, 111);
   border-radius: 100%;
-  color: rgb(136, 172, 153);
+  color: rgb(136, 172, 133);
   z-index: 1;
   margin-top: 40vh;
   font-size: 100px;
   margin-left: -190px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 }
 
 
 .flechaIzk:hover {
-  border: solid 5px rgb(102, 121, 111);
+  border: solid 3px rgb(102, 121, 111);
   border-radius: 100%;
   cursor: pointer;
   color: rgb(136, 172, 153);
   z-index: 1;
   margin-top: 40vh;
-  font-size:100px;
+  font-size: 100px;
   margin-right: -200px;
-    margin-left: 90px;
+  margin-left: 90px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
 
+.scrollOpen {
+  z-index: 1;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5vh;
+}
+
+.contText{
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+}
+
+.scrollText{
+  background-color: (0, 0, 0, 0);
+  color: rgb(102, 121, 111);
+  font-size: 40px;
+  font-family: 'Lobster', cursive;
+}
+
+.turnText{
+  margin: 10vh 10vh 0vh 10vh;
+  background-color: (0, 0, 0, 0);
+  color: rgb(102, 121, 111);
+  font-size: 20px;
+  font-family: 'Lobster', cursive;
 }
 
 div.infoCard {
   position: absolute;
   display: flex;
+  width: 35%;
   background-color: rgb(234, 248, 241);
   border: solid 5px rgb(102, 121, 111);
   border-radius: 10px;
   align-items: center;
   flex-direction: column;
   margin-top: 10vh;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 }
 
-.tituloCard{
+.tituloCard {
   color: rgb(102, 121, 111);
-  font-size: larger;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 40px;
+}
+
+.contenidoCard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.textCard {
+  color: rgb(55, 65, 60);
+  font-size: medium;
+  width: 40%;
 }
 
 
 .imgCard {
-  width: 30%;
+  width: 40%;
   border-radius: 10px;
   margin: 5px;
 }
@@ -161,12 +212,11 @@ div.infoCard {
 .closeCard {
   border: none;
   border-radius: 100%;
-  border: solid 5px white;
   background-color: rgb(102, 121, 111);
-  color: white;
-  font-size: 40px;
-  padding: 10px 20px 10px 20px;
-  margin: 5px;
+  color: rgb(234, 248, 241);
+  font-size: 30px;
+  padding: 10px 15px 10px 15px;
+  margin: 20px;
 }
 
 .closeCard:hover {
@@ -174,9 +224,9 @@ div.infoCard {
   border: solid 5px rgb(102, 121, 111);
   background-color: rgb(136, 172, 153);
   color: rgb(102, 121, 111);
-  font-size: 40px;
-  padding: 10px 20px 10px 20px;
-  margin: 5px;
+  font-size: 30px;
+  padding: 10px 15px 10px 15px;
+  margin: 15px;
 }
 
 .closed {
